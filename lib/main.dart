@@ -241,7 +241,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
     await _saveConfigs();
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('«\${result.name}» сохранён локально.')));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('«${result.name}» сохранён локально.')));
   }
 
   Future<void> _removeConfig(int index) async {
@@ -256,7 +256,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
     await _saveConfigs();
     if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('«\${removed.name}» удалён.')));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('«${removed.name}» удалён.')));
   }
 
   void _showNotReady(String title) {
@@ -281,7 +281,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       const Text('Подключения', style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800)),
                       const SizedBox(height: 6),
                       Text(
-                        _configs.isEmpty ? 'Пока здесь пусто' : '\${_configs.length} конфиг\${_configs.length == 1 ? '' : 'а'}',
+                        _configs.isEmpty ? 'Пока здесь пусто' : '${_configs.length} конфиг${_configs.length == 1 ? '' : 'а'}',
                         style: const TextStyle(color: Colors.white54),
                       ),
                       const SizedBox(height: 16),
@@ -294,7 +294,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 itemBuilder: (context, index) {
                                   final config = _configs[index];
                                   return Dismissible(
-                                    key: ValueKey('\${config.name}-\${config.value.hashCode}'),
+                                    key: ValueKey('${config.name}-${config.value.hashCode}'),
                                     direction: DismissDirection.endToStart,
                                     onDismissed: (_) => _removeConfig(index),
                                     background: Container(
