@@ -74,12 +74,12 @@ class ConfigInspector {
       return 'Формат не распознан. Конфиг не сохранён.';
     }
     if (label == 'WireGuard') {
-      if (!RegExp(r'(?im)^\s*PrivateKey\s*=').hasMatch(value) ||
-          !RegExp(r'(?im)^\s*PublicKey\s*=').hasMatch(value)) {
+      if (!RegExp(r'^\s*PrivateKey\s*=', caseSensitive: false, multiLine: true).hasMatch(value) ||
+          !RegExp(r'^\s*PublicKey\s*=', caseSensitive: false, multiLine: true).hasMatch(value)) {
         return 'WireGuard-конфиг неполный: не найдены PrivateKey и/или PublicKey.';
       }
     } else if (label == 'OpenVPN') {
-      if (!RegExp(r'(?im)^\s*remote\s+\S+').hasMatch(value)) return 'В OpenVPN-конфиге не найдена строка remote.';
+      if (!RegExp(r'^\s*remote\s+\S+', caseSensitive: false, multiLine: true).hasMatch(value)) return 'В OpenVPN-конфиге не найдена строка remote.';
     } else if (label == 'HTTP(S) link') {
       final uri = Uri.tryParse(value);
       if (uri == null || uri.host.isEmpty) return 'Ссылка выглядит неполной: не найден адрес.';
