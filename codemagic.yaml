@@ -7,8 +7,6 @@ workflows:
       groups:
         - android-signing
       flutter: stable
-      xcode: stable
-      cocoapods: default
     triggering:
       events:
         - push
@@ -30,7 +28,7 @@ workflows:
     publishing:
       email:
         recipients:
-          - your-email@gmail.com # Можешь вписать свой email, чтобы билд прилетал на почту
+          - your-email@gmail.com
         notify:
           success: true
           failure: true
